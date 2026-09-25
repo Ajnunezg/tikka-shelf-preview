@@ -1,0 +1,827 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
+  <defs>
+    <!-- ═══ Background ═══ -->
+    <radialGradient id="bg-core" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#0E1420"/>
+      <stop offset="50%" stop-color="#0A0E18"/>
+      <stop offset="100%" stop-color="#060910"/>
+    </radialGradient>
+    <radialGradient id="bg-glow-left" cx="18%" cy="45%" r="35%">
+      <stop offset="0%" stop-color="#9999ff" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#9999ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg-glow-right" cx="82%" cy="55%" r="30%">
+      <stop offset="0%" stop-color="#F45B69" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#F45B69" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg-glow-top" cx="50%" cy="8%" r="40%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg-glow-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ═══ Glass Surface Gradients ═══ -->
+    <linearGradient id="glass-panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="glass-sidebar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="glass-input" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+
+    <!-- ═══ Accent Gradients ═══ -->
+    <linearGradient id="accent-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9999ff"/>
+      <stop offset="35%" stop-color="#00d4ff"/>
+      <stop offset="65%" stop-color="#F45B69"/>
+      <stop offset="100%" stop-color="#ff6b7b"/>
+    </linearGradient>
+    <linearGradient id="title-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#e0e0ff"/>
+      <stop offset="60%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffe0e8"/>
+    </linearGradient>
+    <linearGradient id="user-bubble-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F45B69" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#F45B69" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="agent-bubble-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="thinking-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.20"/>
+      <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.20"/>
+    </linearGradient>
+
+    <!-- ═══ Data Flow Path (animated energy flow around the window) ═══ -->
+    <path id="orbit-path" d="M 80,360 Q 80,60 600,60 Q 1120,60 1120,360 Q 1120,660 600,660 Q 80,660 80,360" fill="none"/>
+    <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9999ff"/>
+      <stop offset="33%" stop-color="#00d4ff"/>
+      <stop offset="66%" stop-color="#F45B69"/>
+      <stop offset="100%" stop-color="#ff6b7b"/>
+    </linearGradient>
+
+    <!-- ═══ Scanline shimmer ═══ -->
+    <linearGradient id="scanline" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9999ff" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#9999ff" stop-opacity="0.04"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="55%" stop-color="#9999ff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#9999ff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- ═══ Filters ═══ -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b1"/>
+      <feGaussianBlur stdDeviation="10" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft-glow">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="strong-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="b1"/>
+      <feGaussianBlur stdDeviation="16" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="window-shadow">
+      <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+
+    <!-- ═══ Dot Grid Pattern ═══ -->
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.6" fill="#9999ff" opacity="0.12"/>
+    </pattern>
+
+    <!-- ═══ Clip Paths ═══ -->
+    <clipPath id="window-clip">
+      <rect x="80" y="60" width="1040" height="600" rx="16"/>
+    </clipPath>
+    <!-- Streaming text reveal clips (conversation) — stutter-step easing for token-burst feel -->
+    <clipPath id="stream-clip-1">
+      <rect x="310" y="0" width="0" height="18">
+        <animate attributeName="width" values="0;60;60;180;180;300;300;430" keyTimes="0;0.1;0.15;0.35;0.4;0.65;0.7;1" dur="2.5s" begin="1.5s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <clipPath id="stream-clip-2">
+      <rect x="310" y="0" width="0" height="18">
+        <animate attributeName="width" values="0;80;80;220;220;350;350;430" keyTimes="0;0.12;0.18;0.4;0.45;0.7;0.75;1" dur="2s" begin="3s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <clipPath id="stream-clip-3">
+      <rect x="310" y="0" width="0" height="18">
+        <animate attributeName="width" values="0;50;50;150;150;280;280;380" keyTimes="0;0.08;0.14;0.32;0.38;0.62;0.68;1" dur="2.5s" begin="4.2s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <!-- Terminal result reveal clips — fast burst typing -->
+    <clipPath id="terminal-clip-1">
+      <rect x="780" y="0" width="0" height="16">
+        <animate attributeName="width" values="0;50;50;150;150;300" keyTimes="0;0.15;0.2;0.5;0.55;1" dur="1s" begin="2s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <clipPath id="terminal-clip-2">
+      <rect x="780" y="0" width="0" height="16">
+        <animate attributeName="width" values="0;70;70;200;200;300" keyTimes="0;0.18;0.22;0.55;0.6;1" dur="0.8s" begin="3.5s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <clipPath id="terminal-clip-3">
+      <rect x="780" y="0" width="0" height="16">
+        <animate attributeName="width" values="0;40;40;120;120;220;220;300" keyTimes="0;0.1;0.14;0.35;0.4;0.6;0.65;1" dur="1.2s" begin="4.5s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <!-- User input typing clip (for composer area) -->
+    <clipPath id="input-type-clip">
+      <rect x="320" y="0" width="0" height="20">
+        <animate attributeName="width" values="0;0;30;30;80;80;120;120;180;180;260;260;340" keyTimes="0;0.1;0.15;0.18;0.25;0.28;0.35;0.38;0.5;0.55;0.7;0.75;1" dur="4s" begin="11s" repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+
+    <!-- ═══ Reusable data particle ═══ -->
+    <circle id="data-bit" cx="0" cy="0" r="2" fill="#ffffff" filter="url(#glow)"/>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--               DEEP BACKGROUND                   -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <rect width="1200" height="720" fill="url(#bg-core)"/>
+  <rect width="1200" height="720" fill="url(#dots)"/>
+  <rect width="1200" height="720" fill="url(#bg-glow-left)"/>
+  <rect width="1200" height="720" fill="url(#bg-glow-right)"/>
+  <rect width="1200" height="720" fill="url(#bg-glow-top)"/>
+  <rect width="1200" height="720" fill="url(#bg-glow-center)"/>
+
+  <!-- Ambient floating particles (stardust) -->
+  <g opacity="0.5">
+    <circle cx="95" cy="50" r="1.2" fill="#9999ff"><animate attributeName="opacity" values="0.1;0.8;0.1" dur="3s" repeatCount="indefinite"/><animate attributeName="cy" values="50;35;50" dur="7s" repeatCount="indefinite"/></circle>
+    <circle cx="350" cy="30" r="1" fill="#00d4ff"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" repeatCount="indefinite"/></circle>
+    <circle cx="750" cy="20" r="1.5" fill="#F45B69"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="3.5s" repeatCount="indefinite"/><animate attributeName="cy" values="20;10;20" dur="6s" repeatCount="indefinite"/></circle>
+    <circle cx="1100" cy="55" r="1" fill="#ffffff"><animate attributeName="opacity" values="0.1;0.6;0.1" dur="2.8s" repeatCount="indefinite"/></circle>
+    <circle cx="200" cy="690" r="1.3" fill="#00d4ff"><animate attributeName="opacity" values="0.2;0.9;0.2" dur="4.2s" repeatCount="indefinite"/></circle>
+    <circle cx="600" cy="705" r="1" fill="#ff6b7b"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="3.2s" repeatCount="indefinite"/></circle>
+    <circle cx="1000" cy="685" r="1.5" fill="#9999ff"><animate attributeName="opacity" values="0.15;0.8;0.15" dur="3.8s" repeatCount="indefinite"/><animate attributeName="cy" values="685;675;685" dur="8s" repeatCount="indefinite"/></circle>
+    <circle cx="50" cy="400" r="1" fill="#80FF80"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="5s" repeatCount="indefinite"/></circle>
+    <circle cx="1160" cy="350" r="0.8" fill="#C084FC"><animate attributeName="opacity" values="0.1;0.6;0.1" dur="4.5s" repeatCount="indefinite"/></circle>
+    <circle cx="500" cy="15" r="0.7" fill="#FFB347"><animate attributeName="opacity" values="0.1;0.9;0.1" dur="2.5s" repeatCount="indefinite"/></circle>
+    <circle cx="30" cy="250" r="1.1" fill="#ff6b7b"><animate attributeName="opacity" values="0.05;0.5;0.05" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" values="250;240;250" dur="9s" repeatCount="indefinite"/></circle>
+    <circle cx="1175" cy="550" r="0.9" fill="#00D4AA"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="3.6s" repeatCount="indefinite"/></circle>
+    <circle cx="680" cy="710" r="0.8" fill="#8080FF"><animate attributeName="opacity" values="0.15;0.6;0.15" dur="4.8s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- Constellation mesh lines (background web) -->
+  <g opacity="0.10" stroke="#5555aa" stroke-width="0.5" fill="none">
+    <polyline points="60,90 130,40 220,80 180,120"/>
+    <polyline points="980,30 1050,70 1130,45 1100,15"/>
+    <polyline points="70,630 150,670 250,640 200,610"/>
+    <polyline points="1000,680 1080,650 1140,690 1090,710"/>
+    <polyline points="30,300 55,340 40,380"/>
+    <polyline points="1160,250 1175,290 1155,330"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--      ORBITING ENERGY PARTICLES (behind window)  -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g opacity="0.3">
+    <!-- Orbit path particles -->
+    <use href="#data-bit" fill="#9999ff">
+      <animateMotion dur="12s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="12s" repeatCount="indefinite"/>
+    </use>
+    <use href="#data-bit" fill="#00d4ff">
+      <animateMotion dur="12s" begin="3s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="12s" repeatCount="indefinite"/>
+    </use>
+    <use href="#data-bit" fill="#F45B69">
+      <animateMotion dur="12s" begin="6s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="12s" repeatCount="indefinite"/>
+    </use>
+    <use href="#data-bit" fill="#ff6b7b">
+      <animateMotion dur="12s" begin="9s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="12s" repeatCount="indefinite"/>
+    </use>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--               MAIN WINDOW FRAME                 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g filter="url(#window-shadow)">
+    <rect x="80" y="60" width="1040" height="600" rx="16" fill="#111122" stroke="#2a2a44" stroke-width="1.5"/>
+    <!-- Title bar -->
+    <rect x="80" y="60" width="1040" height="40" rx="16" fill="#181830"/>
+    <rect x="80" y="88" width="1040" height="12" fill="#181830"/>
+    <!-- Traffic lights -->
+    <circle cx="108" cy="80" r="6.5" fill="#ff5f56"/>
+    <circle cx="130" cy="80" r="6.5" fill="#ffbd2e"/>
+    <circle cx="152" cy="80" r="6.5" fill="#27c93f"/>
+    <!-- Window title -->
+    <text x="600" y="85" font-family="'SF Mono', 'Fira Code', monospace" font-size="12" fill="#6666aa" text-anchor="middle" font-weight="600" letter-spacing="0.5">agnos  --  imaginethat.ai  [workspace: itx]</text>
+  </g>
+
+  <!-- Accent gradient bar under title (breathing) -->
+  <rect x="80" y="99" width="1040" height="2.5" fill="url(#accent-bar)" opacity="0.7">
+    <animate attributeName="opacity" values="0.5;0.9;0.5" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <!-- Traveling pulse on accent bar -->
+  <rect x="80" y="99" width="80" height="2.5" fill="#ffffff" opacity="0" rx="1">
+    <animate attributeName="opacity" values="0;0.7;0" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="80;1040" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  <!-- Second pulse (offset) -->
+  <rect x="80" y="99" width="40" height="2.5" fill="#ffffff" opacity="0" rx="1">
+    <animate attributeName="opacity" values="0;0.4;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="80;1040" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--            STATUS BAR (below title)              -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g clip-path="url(#window-clip)">
+    <rect x="80" y="101" width="1040" height="24" fill="#0d0d1e"/>
+
+    <!-- Agent state indicator (cycles through states) -->
+    <circle cx="102" cy="113" r="4" fill="#8B5CF6" filter="url(#soft-glow)">
+      <animate attributeName="fill" values="#4A6CF7;#8B5CF6;#F59E0B;#8B5CF6;#4A6CF7" keyTimes="0;0.2;0.5;0.8;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="4;5.5;4" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Outer halo ring -->
+    <circle cx="102" cy="113" r="7" fill="none" stroke="#8B5CF6" stroke-width="1" opacity="0">
+      <animate attributeName="opacity" values="0;0.3;0" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="7;10;7" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#4A6CF7;#8B5CF6;#F59E0B;#8B5CF6;#4A6CF7" keyTimes="0;0.2;0.5;0.8;1" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <text x="114" y="117" font-family="'SF Mono', monospace" font-size="10" fill="#8B5CF6" font-weight="700">
+      THINKING
+      <animate attributeName="fill" values="#4A6CF7;#8B5CF6;#F59E0B;#8B5CF6;#4A6CF7" keyTimes="0;0.2;0.5;0.8;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- Model badge -->
+    <rect x="195" y="105" width="75" height="16" rx="4" fill="#9999ff" opacity="0.12"/>
+    <text x="233" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#9999ff" text-anchor="middle" font-weight="600">opus-4.6</text>
+
+    <!-- Token counter (incrementing) -->
+    <text x="290" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#555577">spine v0.4.1</text>
+
+    <!-- Token speed sparkline (tiny animated bar chart) -->
+    <g transform="translate(710, 107)" opacity="0.5">
+      <rect x="0" y="8" width="2" height="6" fill="#00d4ff">
+        <animate attributeName="height" values="6;10;4;8;6" dur="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="8;4;10;6;8" dur="1.5s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="4" y="6" width="2" height="8" fill="#00d4ff">
+        <animate attributeName="height" values="8;4;10;6;8" dur="1.5s" begin="0.2s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="6;10;4;8;6" dur="1.5s" begin="0.2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="8" y="4" width="2" height="10" fill="#00d4ff">
+        <animate attributeName="height" values="10;6;8;4;10" dur="1.5s" begin="0.4s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="4;8;6;10;4" dur="1.5s" begin="0.4s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="12" y="7" width="2" height="7" fill="#00d4ff">
+        <animate attributeName="height" values="7;10;5;9;7" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="7;4;9;5;7" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="16" y="5" width="2" height="9" fill="#00d4ff">
+        <animate attributeName="height" values="9;5;7;10;9" dur="1.5s" begin="0.8s" repeatCount="indefinite"/>
+        <animate attributeName="y" values="5;9;7;4;5" dur="1.5s" begin="0.8s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- Right side status — token count increments -->
+    <text x="740" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#555577">tok: </text>
+    <text x="764" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#00d4ff">
+      12,847
+      <!-- Simulated increment by swapping displayed values -->
+      <animate attributeName="textContent" values="11,204;11,847;12,102;12,458;12,847;13,102;13,450" dur="8s" repeatCount="indefinite"/>
+    </text>
+    <text x="880" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#555577">gates: <tspan fill="#27c93f">3/3</tspan></text>
+    <text x="970" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#555577">cost: <tspan fill="#FFB347">$0.24</tspan></text>
+    <text x="1060" y="117" font-family="'SF Mono', monospace" font-size="9" fill="#444466">run_k9x2a</text>
+
+    <rect x="80" y="125" width="1040" height="1" fill="#ffffff" opacity="0.06"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--           LEFT SIDEBAR (Chats + Memory)          -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g clip-path="url(#window-clip)">
+    <rect x="80" y="126" width="210" height="534" fill="url(#glass-sidebar)"/>
+
+    <!-- Scanline shimmer effect across sidebar -->
+    <rect x="80" y="126" width="210" height="534" fill="url(#scanline)" opacity="0">
+      <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0,-534;0,534" dur="6s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Sidebar header -->
+    <text x="100" y="150" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#9999ff" letter-spacing="2" opacity="0.8">CONVERSATIONS</text>
+    <rect x="95" y="158" width="180" height="1" fill="#ffffff" opacity="0.06"/>
+
+    <!-- Active chat (highlighted with animated glow) -->
+    <rect x="90" y="168" width="190" height="50" rx="8" fill="#9999ff" opacity="0.1" stroke="#9999ff" stroke-width="1" stroke-opacity="0.3"/>
+    <rect x="90" y="168" width="190" height="50" rx="8" fill="none" stroke="#9999ff" stroke-width="1.5" opacity="0">
+      <animate attributeName="opacity" values="0;0.25;0" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <circle cx="108" cy="185" r="5" fill="#9999ff" opacity="0.6"/>
+    <text x="120" y="183" font-family="'SF Mono', monospace" font-size="11" fill="#e0e0ff" font-weight="600">Replay Harness</text>
+    <text x="120" y="200" font-family="'SF Mono', monospace" font-size="9" fill="#6666aa">spine runner + policy gates</text>
+    <!-- Unread indicator -->
+    <circle cx="268" cy="185" r="3.5" fill="#F45B69">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="3.5;4.5;3.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Other chats -->
+    <g opacity="0.5">
+      <rect x="90" y="226" width="190" height="44" rx="8" fill="transparent"/>
+      <circle cx="108" cy="243" r="5" fill="#00d4ff" opacity="0.4"/>
+      <text x="120" y="241" font-family="'SF Mono', monospace" font-size="11" fill="#8888aa">Search Signals</text>
+      <text x="120" y="256" font-family="'SF Mono', monospace" font-size="9" fill="#555577">constellation palette</text>
+
+      <rect x="90" y="278" width="190" height="44" rx="8" fill="transparent"/>
+      <circle cx="108" cy="295" r="5" fill="#ff6b7b" opacity="0.4"/>
+      <text x="120" y="293" font-family="'SF Mono', monospace" font-size="11" fill="#8888aa">FFI Bridge</text>
+      <text x="120" y="308" font-family="'SF Mono', monospace" font-size="9" fill="#555577">libitx_ffi.dylib</text>
+
+      <rect x="90" y="330" width="190" height="44" rx="8" fill="transparent"/>
+      <circle cx="108" cy="347" r="5" fill="#80FF80" opacity="0.4"/>
+      <text x="120" y="345" font-family="'SF Mono', monospace" font-size="11" fill="#8888aa">Bench Harness</text>
+      <text x="120" y="360" font-family="'SF Mono', monospace" font-size="9" fill="#555577">failpack scoring</text>
+    </g>
+
+    <!-- Memory section -->
+    <rect x="95" y="390" width="180" height="1" fill="#ffffff" opacity="0.06"/>
+    <text x="100" y="412" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#F45B69" letter-spacing="2" opacity="0.6">MEMORY</text>
+
+    <g opacity="0.4">
+      <rect x="90" y="424" width="190" height="36" rx="6" fill="transparent"/>
+      <text x="100" y="440" font-family="'SF Mono', monospace" font-size="9" fill="#8888aa">project structure (itx)</text>
+      <text x="100" y="452" font-family="'SF Mono', monospace" font-size="8" fill="#555577">6 crates  |  workspace root</text>
+
+      <rect x="90" y="466" width="190" height="36" rx="6" fill="transparent"/>
+      <text x="100" y="482" font-family="'SF Mono', monospace" font-size="9" fill="#8888aa">Spine policy gates</text>
+      <text x="100" y="494" font-family="'SF Mono', monospace" font-size="8" fill="#555577">state + determinism + replay</text>
+
+      <rect x="90" y="508" width="190" height="36" rx="6" fill="transparent"/>
+      <text x="100" y="524" font-family="'SF Mono', monospace" font-size="9" fill="#8888aa">search constellation</text>
+      <text x="100" y="536" font-family="'SF Mono', monospace" font-size="8" fill="#555577">5 signals  |  fusion rank</text>
+    </g>
+
+    <!-- Cascade Logo at bottom of sidebar (animated rotation) -->
+    <g transform="translate(185, 620)" opacity="0.35">
+      <animateTransform attributeName="transform" type="rotate" values="0,185,620;0,185,620;360,185,620;360,185,620" keyTimes="0;0.4;0.6;1" dur="12s" repeatCount="indefinite" additive="sum"/>
+      <rect x="-8" y="-8" width="6" height="6" rx="1.5" fill="#9999ff"/>
+      <rect x="0" y="-8" width="6" height="6" rx="1.5" fill="#F45B69"/>
+      <rect x="-8" y="0" width="6" height="6" rx="1.5" fill="#00d4ff"/>
+      <rect x="0" y="0" width="6" height="6" rx="1.5" fill="#ff6b7b"/>
+      <circle cx="-1" cy="-1" r="2" fill="#ffffff" opacity="0.8">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- Sidebar right border -->
+    <rect x="289" y="126" width="1" height="534" fill="#ffffff" opacity="0.06"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--        CENTER: CONVERSATION TRANSCRIPT           -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g clip-path="url(#window-clip)">
+    <rect x="290" y="126" width="480" height="534" fill="url(#glass-panel)"/>
+
+    <!-- Pane header -->
+    <text x="310" y="150" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#8888aa" letter-spacing="2">TRANSCRIPT</text>
+    <!-- Message count badge -->
+    <rect x="410" y="140" width="22" height="14" rx="4" fill="#9999ff" opacity="0.15"/>
+    <text x="421" y="150" font-family="'SF Mono', monospace" font-size="8" fill="#9999ff" text-anchor="middle">24</text>
+
+    <!-- Scrollbar (animated scroll position) -->
+    <rect x="760" y="140" width="3" height="50" rx="1.5" fill="#555577" opacity="0.3">
+      <animate attributeName="y" values="140;280;140" dur="12s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- ── User Message ── -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.6s" begin="0.5s" fill="freeze"/>
+      <rect x="310" y="168" width="440" height="52" rx="12" fill="url(#user-bubble-fill)" stroke="#F45B69" stroke-width="1" stroke-opacity="0.25"/>
+      <text x="326" y="186" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#F45B69">you</text>
+      <text x="354" y="186" font-family="'SF Mono', monospace" font-size="8" fill="#555577">2:47 PM</text>
+      <text x="326" y="206" font-family="'SF Mono', monospace" font-size="12" fill="#e8e8f0">Build the deterministic replay harness for Spine.</text>
+    </g>
+
+    <!-- ── Agent Response ── -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.6s" begin="1.2s" fill="freeze"/>
+
+      <!-- Thinking state ambient glow (breathes during thinking phase) -->
+      <rect x="310" y="235" width="440" height="275" rx="12" fill="url(#thinking-glow)" opacity="0">
+        <animate attributeName="opacity" values="0;0.12;0;0.12;0;0" dur="4s" begin="1.2s" repeatCount="3"/>
+      </rect>
+
+      <!-- Bubble -->
+      <rect x="310" y="235" width="440" height="275" rx="12" fill="url(#agent-bubble-fill)" stroke="#9999ff" stroke-width="1" stroke-opacity="0.2"/>
+
+      <!-- Agent header -->
+      <text x="326" y="256" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#9999ff">agnos</text>
+      <rect x="370" y="247" width="42" height="14" rx="4" fill="#F45B69" opacity="0.15"/>
+      <text x="391" y="257" font-family="system-ui, sans-serif" font-size="8" font-weight="700" fill="#F45B69" text-anchor="middle">TL;DR</text>
+      <text x="420" y="256" font-family="'SF Mono', monospace" font-size="8" fill="#555577">2:47 PM</text>
+
+      <!-- Streaming response lines (typewriter reveal) -->
+      <g clip-path="url(#stream-clip-1)">
+        <text x="326" y="278" font-family="'SF Mono', monospace" font-size="12" fill="#ccccdd">Implemented <tspan fill="#ff6b7b">SpineRunner</tspan> with 3-gate policy chain.</text>
+      </g>
+      <g clip-path="url(#stream-clip-2)">
+        <text x="326" y="298" font-family="'SF Mono', monospace" font-size="12" fill="#ccccdd">Action IR logged to <tspan fill="#00d4ff">events.jsonl</tspan> for deterministic</text>
+      </g>
+      <g clip-path="url(#stream-clip-3)">
+        <text x="326" y="318" font-family="'SF Mono', monospace" font-size="12" fill="#ccccdd">playback with zero side-effect leakage.</text>
+      </g>
+
+      <!-- Streaming cursor — tracks each line reveal with pauses between bursts -->
+      <rect x="326" y="268" width="2.5" height="15" rx="1" fill="#9999ff" filter="url(#soft-glow)" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1;1;1;1;1;0" keyTimes="0;0.11;0.12;0.40;0.41;0.70;0.71;0.95;1" dur="6s" begin="1.5s" fill="freeze"/>
+        <!-- x tracks the clip-rect expansion (burst → pause → burst) -->
+        <animate attributeName="x" values="326;386;386;506;506;626;626;756;756;326;406;406;546;546;676;676;756;756;326;376;376;476;476;606;606;706" keyTimes="0;0.04;0.06;0.14;0.15;0.26;0.27;0.37;0.38;0.39;0.44;0.47;0.55;0.57;0.66;0.68;0.73;0.74;0.75;0.78;0.8;0.85;0.87;0.92;0.94;1" dur="6s" begin="1.5s" fill="freeze"/>
+        <!-- y jumps to next line at each line break -->
+        <animate attributeName="y" values="268;268;268;268;268;268;268;268;268;288;288;288;288;288;288;288;288;288;308;308;308;308;308;308;308;308" keyTimes="0;0.04;0.06;0.14;0.15;0.26;0.27;0.37;0.38;0.39;0.44;0.47;0.55;0.57;0.66;0.68;0.73;0.74;0.75;0.78;0.8;0.85;0.87;0.92;0.94;1" dur="6s" begin="1.5s" fill="freeze"/>
+      </rect>
+      <!-- Cursor trail glow (ghosting effect behind the cursor) -->
+      <rect x="326" y="268" width="12" height="15" rx="3" fill="#9999ff" opacity="0">
+        <animate attributeName="opacity" values="0;0;0.08;0.08;0" keyTimes="0;0.12;0.13;0.90;1" dur="6s" begin="1.5s" fill="freeze"/>
+        <animate attributeName="x" values="316;376;376;496;496;616;616;746;746;316;396;396;536;536;666;666;746;746;316;366;366;466;466;596;596;696" keyTimes="0;0.04;0.06;0.14;0.15;0.26;0.27;0.37;0.38;0.39;0.44;0.47;0.55;0.57;0.66;0.68;0.73;0.74;0.75;0.78;0.8;0.85;0.87;0.92;0.94;1" dur="6s" begin="1.5s" fill="freeze"/>
+        <animate attributeName="y" values="268;268;268;268;268;268;268;268;268;288;288;288;288;288;288;288;288;288;308;308;308;308;308;308;308;308" keyTimes="0;0.04;0.06;0.14;0.15;0.26;0.27;0.37;0.38;0.39;0.44;0.47;0.55;0.57;0.66;0.68;0.73;0.74;0.75;0.78;0.8;0.85;0.87;0.92;0.94;1" dur="6s" begin="1.5s" fill="freeze"/>
+      </rect>
+
+      <!-- Token flash line (bright line that sweeps across during streaming) -->
+      <rect x="326" y="270" width="430" height="1" fill="#9999ff" opacity="0">
+        <animate attributeName="opacity" values="0;0;0.3;0;0;0.3;0;0;0.3;0" keyTimes="0;0.14;0.15;0.38;0.39;0.40;0.69;0.70;0.71;0.95" dur="6s" begin="1.5s" fill="freeze"/>
+        <animate attributeName="y" values="270;270;270;270;290;290;290;310;310;310" keyTimes="0;0.14;0.15;0.38;0.39;0.40;0.69;0.70;0.71;0.95" dur="6s" begin="1.5s" fill="freeze"/>
+      </rect>
+
+      <!-- Code block (appears after text streams) -->
+      <g opacity="0">
+        <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.85;1" dur="7s" fill="freeze"/>
+        <rect x="326" y="332" width="408" height="68" rx="6" fill="#060910" stroke="#222244" stroke-width="1"/>
+        <!-- Line numbers gutter -->
+        <rect x="326" y="332" width="25" height="68" rx="6" fill="#0a0a18"/>
+        <text x="338" y="349" font-family="'SF Mono', monospace" font-size="10" fill="#333355" text-anchor="middle">1</text>
+        <text x="338" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#333355" text-anchor="middle">2</text>
+        <text x="338" y="383" font-family="'SF Mono', monospace" font-size="10" fill="#333355" text-anchor="middle">3</text>
+
+        <text x="356" y="349" font-family="'SF Mono', monospace" font-size="10" fill="#C792EA">let</text>
+        <text x="382" y="349" font-family="'SF Mono', monospace" font-size="10" fill="#82AAFF">runner</text>
+        <text x="430" y="349" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">= SpineRunner::</text>
+        <text x="540" y="349" font-family="'SF Mono', monospace" font-size="10" fill="#82AAFF">new</text>
+        <text x="564" y="349" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">(policy);</text>
+
+        <text x="356" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#C792EA">let</text>
+        <text x="382" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#82AAFF">result</text>
+        <text x="426" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">= runner.</text>
+        <text x="488" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#82AAFF">replay</text>
+        <text x="536" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">(</text>
+        <text x="544" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#C3E88D">"run_k9x2a"</text>
+        <text x="636" y="366" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">);</text>
+
+        <text x="356" y="383" font-family="'SF Mono', monospace" font-size="10" fill="#C792EA">assert!</text>
+        <text x="404" y="383" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">(result.</text>
+        <text x="454" y="383" font-family="'SF Mono', monospace" font-size="10" fill="#82AAFF">is_perfect_match</text>
+        <text x="580" y="383" font-family="'SF Mono', monospace" font-size="10" fill="#ccccdd">());</text>
+      </g>
+
+      <!-- Tool call badges (stagger in one by one) -->
+      <g transform="translate(326, 412)">
+        <!-- File tool -->
+        <g opacity="0">
+          <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.88;1" dur="8s" fill="freeze"/>
+          <rect width="85" height="20" rx="6" fill="#4FC1FF" opacity="0.12"/>
+          <circle cx="10" cy="10" r="3" fill="#4FC1FF" opacity="0.7">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <text x="18" y="14" font-family="'SF Mono', monospace" font-size="9" fill="#4FC1FF">write_file</text>
+        </g>
+
+        <!-- Shell tool -->
+        <g transform="translate(95, 0)" opacity="0">
+          <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.90;1" dur="8.5s" fill="freeze"/>
+          <rect width="95" height="20" rx="6" fill="#FFB347" opacity="0.12"/>
+          <circle cx="10" cy="10" r="3" fill="#FFB347" opacity="0.7">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+          </circle>
+          <text x="18" y="14" font-family="'SF Mono', monospace" font-size="9" fill="#FFB347">cargo build</text>
+        </g>
+
+        <!-- Search tool -->
+        <g transform="translate(200, 0)" opacity="0">
+          <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.92;1" dur="9s" fill="freeze"/>
+          <rect width="95" height="20" rx="6" fill="#80FF80" opacity="0.12"/>
+          <circle cx="10" cy="10" r="3" fill="#80FF80" opacity="0.7">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+          </circle>
+          <text x="18" y="14" font-family="'SF Mono', monospace" font-size="9" fill="#80FF80">grep_files</text>
+        </g>
+
+        <!-- Git tool -->
+        <g transform="translate(305, 0)" opacity="0">
+          <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.94;1" dur="9.5s" fill="freeze"/>
+          <rect width="90" height="20" rx="6" fill="#FF6B9D" opacity="0.12"/>
+          <circle cx="10" cy="10" r="3" fill="#FF6B9D" opacity="0.7">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+          </circle>
+          <text x="18" y="14" font-family="'SF Mono', monospace" font-size="9" fill="#FF6B9D">git_diff</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ── Thinking / Typing Indicator (three-dot bounce) ── -->
+    <g opacity="0" transform="translate(310, 524)">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.1;0.15;0.85;1" dur="10s" repeatCount="indefinite"/>
+      <rect x="0" y="0" width="70" height="28" rx="10" fill="#9999ff" opacity="0.06" stroke="#9999ff" stroke-width="1" stroke-opacity="0.12"/>
+      <circle cx="18" cy="14" r="3.5" fill="#9999ff">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="14;10;14" dur="1.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="35" cy="14" r="3.5" fill="#9999ff">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="14;10;14" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="52" cy="14" r="3.5" fill="#9999ff">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="14;10;14" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- ── Recommendation bar ── -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;0.6" keyTimes="0;0.95;1" dur="10s" fill="freeze"/>
+      <rect x="300" y="558" width="460" height="20" rx="4" fill="#0d0d1e"/>
+      <text x="310" y="572" font-family="'SF Mono', monospace" font-size="9" fill="#555577">suggested:</text>
+      <text x="380" y="572" font-family="'SF Mono', monospace" font-size="9" fill="#00d4ff">run bench harness</text>
+      <text x="510" y="572" font-family="'SF Mono', monospace" font-size="9" fill="#444466">|</text>
+      <text x="525" y="572" font-family="'SF Mono', monospace" font-size="9" fill="#9999ff">add replay config</text>
+      <text x="650" y="572" font-family="'SF Mono', monospace" font-size="9" fill="#444466">|</text>
+      <text x="665" y="572" font-family="'SF Mono', monospace" font-size="9" fill="#ff6b7b">show gate logs</text>
+    </g>
+
+    <!-- ── Input Composer ── -->
+    <rect x="300" y="582" width="460" height="50" rx="12" fill="url(#glass-input)" stroke="#444466" stroke-width="1.5"/>
+    <!-- Inner glow on input focus -->
+    <rect x="300" y="582" width="460" height="50" rx="12" fill="none" stroke="#9999ff" stroke-width="1.5" opacity="0">
+      <animate attributeName="opacity" values="0;0.15;0" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Placeholder text (fades out when typing starts) -->
+    <text x="320" y="612" font-family="'SF Mono', monospace" font-size="12" fill="#555577">
+      Type your prompt...
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.9;0.95;1" dur="12s" repeatCount="indefinite"/>
+    </text>
+    <!-- Typed input text (appears character by character after placeholder fades) -->
+    <g clip-path="url(#input-type-clip)">
+      <text x="320" y="612" font-family="'SF Mono', monospace" font-size="12" fill="#e0e0f0" opacity="0">
+        now run the full bench suite on spine
+        <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.9;0.95;1" dur="12s" repeatCount="indefinite"/>
+      </text>
+    </g>
+    <!-- Blinking cursor (jumps to track typed text) -->
+    <rect x="320" y="601" width="2" height="16" rx="1" fill="#9999ff">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+      <!-- Cursor advances as text is typed, then resets -->
+      <animate attributeName="x" values="320;320;320;350;350;400;400;440;440;500;500;580;580;660;660;320" keyTimes="0;0.82;0.83;0.85;0.86;0.88;0.89;0.91;0.92;0.94;0.95;0.97;0.975;0.99;0.995;1" dur="15s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Mode indicator -->
+    <rect x="695" y="594" width="52" height="20" rx="6" fill="#F45B69" opacity="0.12"/>
+    <text x="721" y="608" font-family="'SF Mono', monospace" font-size="9" fill="#F45B69" text-anchor="middle" font-weight="600">coder</text>
+    <text x="670" y="628" font-family="'SF Mono', monospace" font-size="8" fill="#333355">Enter send | Shift+Enter newline</text>
+
+    <!-- Center/Right border -->
+    <rect x="769" y="126" width="1" height="534" fill="#ffffff" opacity="0.06"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--             RIGHT: AGENT TERMINAL                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g clip-path="url(#window-clip)">
+    <rect x="770" y="126" width="350" height="534" fill="#080B12"/>
+
+    <!-- Terminal header -->
+    <text x="790" y="150" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#F45B69" letter-spacing="2">TERMINAL</text>
+    <rect x="1052" y="139" width="48" height="16" rx="4" fill="#1a1a30"/>
+    <text x="1076" y="150" font-family="'SF Mono', monospace" font-size="8" fill="#666688" text-anchor="middle">Ctrl+T</text>
+    <rect x="785" y="158" width="320" height="1" fill="#ffffff" opacity="0.06"/>
+
+    <!-- Terminal content -->
+    <text x="790" y="178" font-family="'SF Mono', monospace" font-size="11" fill="#27c93f">&#10095;</text>
+    <text x="808" y="178" font-family="'SF Mono', monospace" font-size="11" fill="#e0e0f0">cargo nextest run -p spine</text>
+
+    <text x="790" y="198" font-family="'SF Mono', monospace" font-size="10" fill="#666688">   Compiling spine v0.4.1</text>
+    <text x="790" y="214" font-family="'SF Mono', monospace" font-size="10" fill="#00d4ff">   Starting <tspan fill="#666688">14 tests across 1 binary</tspan></text>
+
+    <!-- Animated test results (typewriter reveal) -->
+    <g clip-path="url(#terminal-clip-1)">
+      <text x="790" y="234" font-family="'SF Mono', monospace" font-size="10" fill="#27c93f">      PASS</text>
+      <text x="855" y="234" font-family="'SF Mono', monospace" font-size="10" fill="#666688">[0.001s] spine::gates::state_gate</text>
+    </g>
+    <g clip-path="url(#terminal-clip-2)">
+      <text x="790" y="252" font-family="'SF Mono', monospace" font-size="10" fill="#27c93f">      PASS</text>
+      <text x="855" y="252" font-family="'SF Mono', monospace" font-size="10" fill="#666688">[0.004s] spine::gates::determ_gate</text>
+    </g>
+    <g clip-path="url(#terminal-clip-3)">
+      <text x="790" y="270" font-family="'SF Mono', monospace" font-size="10" fill="#27c93f">      PASS</text>
+      <text x="855" y="270" font-family="'SF Mono', monospace" font-size="10" fill="#666688">[0.012s] spine::replay::perfect_match</text>
+    </g>
+
+    <!-- More test results (fade in) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.8;1" dur="6s" fill="freeze"/>
+      <text x="790" y="290" font-family="'SF Mono', monospace" font-size="10" fill="#27c93f">      PASS</text>
+      <text x="855" y="290" font-family="'SF Mono', monospace" font-size="10" fill="#666688">[0.003s] spine::ir::action_serialize</text>
+      <text x="790" y="308" font-family="'SF Mono', monospace" font-size="10" fill="#27c93f">      PASS</text>
+      <text x="855" y="308" font-family="'SF Mono', monospace" font-size="10" fill="#666688">[0.008s] spine::runner::gate_chain</text>
+    </g>
+
+    <!-- Test summary (fades in later) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.9;1" dur="7s" fill="freeze"/>
+      <rect x="785" y="325" width="320" height="1" fill="#ffffff" opacity="0.06"/>
+      <text x="790" y="346" font-family="'SF Mono', monospace" font-size="10" fill="#00d4ff">   Summary</text>
+      <text x="870" y="346" font-family="'SF Mono', monospace" font-size="10" fill="#666688">[0.042s] 14 run: <tspan fill="#27c93f">14 passed</tspan>, <tspan fill="#F45B69">0 failed</tspan></text>
+      <!-- Success checkmark -->
+      <circle cx="1095" cy="340" r="6" fill="#27c93f" opacity="0.15"/>
+      <text x="1095" y="344" font-family="system-ui" font-size="10" fill="#27c93f" text-anchor="middle">&#10003;</text>
+    </g>
+
+    <!-- ── Agent Thought Panel ── -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.85;1" dur="8s" fill="freeze"/>
+      <rect x="785" y="370" width="320" height="90" rx="8" fill="#111133" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="6 3" stroke-opacity="0.5"/>
+      <!-- Animated dashed border (rotating dash) -->
+      <rect x="785" y="370" width="320" height="90" rx="8" fill="none" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="10 5" opacity="0.3">
+        <animate attributeName="stroke-dashoffset" values="0;-30" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Pulsing border glow -->
+      <rect x="785" y="370" width="320" height="90" rx="8" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0">
+        <animate attributeName="opacity" values="0;0.3;0" dur="2.5s" repeatCount="indefinite"/>
+      </rect>
+      <text x="800" y="392" font-family="'SF Mono', monospace" font-size="10" font-weight="700" fill="#8B5CF6" filter="url(#soft-glow)">AGENT REASONING</text>
+      <text x="800" y="412" font-family="'SF Mono', monospace" font-size="10" fill="#9999cc">All 14 tests pass. The gate chain</text>
+      <text x="800" y="427" font-family="'SF Mono', monospace" font-size="10" fill="#9999cc">enforces determinism. events.jsonl</text>
+      <text x="800" y="442" font-family="'SF Mono', monospace" font-size="10" fill="#9999cc">replay is verified side-effect free.</text>
+    </g>
+
+    <!-- ── JSON Action Output ── -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.92;1" dur="9s" fill="freeze"/>
+      <text x="790" y="486" font-family="'SF Mono', monospace" font-size="10" fill="#F45B69" font-weight="600">action.executed <tspan fill="#555577" font-weight="400">-- run_k9x2a</tspan></text>
+      <rect x="785" y="494" width="320" height="75" rx="6" fill="#060910" stroke="#1a1a30" stroke-width="1"/>
+      <text x="798" y="512" font-family="'SF Mono', monospace" font-size="10" fill="#555577">{</text>
+      <text x="798" y="527" font-family="'SF Mono', monospace" font-size="10" fill="#555577">  <tspan fill="#F78C6C">"kind"</tspan>: <tspan fill="#C3E88D">"mutate"</tspan>,</text>
+      <text x="798" y="542" font-family="'SF Mono', monospace" font-size="10" fill="#555577">  <tspan fill="#F78C6C">"op"</tspan>: <tspan fill="#C3E88D">"write_file"</tspan>,</text>
+      <text x="798" y="557" font-family="'SF Mono', monospace" font-size="10" fill="#555577">  <tspan fill="#F78C6C">"status"</tspan>: <tspan fill="#00d4ff">"success"</tspan></text>
+    </g>
+
+    <!-- Terminal typing cursor (tracks output as it streams, then settles at bottom) -->
+    <rect x="790" y="225" width="6" height="12" rx="1" fill="#27c93f" opacity="0">
+      <!-- Visible during output phase -->
+      <animate attributeName="opacity" values="0;0;0.8;0.8;0.8;0.8;0.8;0;0;0.8;0" keyTimes="0;0.15;0.16;0.3;0.31;0.5;0.51;0.52;0.85;0.86;1" dur="10s" fill="freeze"/>
+      <!-- Jumps down as each line appears -->
+      <animate attributeName="y" values="225;225;243;243;261;261;281;281;299;299;340;340;640;640" keyTimes="0;0.2;0.25;0.35;0.38;0.45;0.5;0.6;0.63;0.7;0.8;0.9;0.95;1" dur="10s" fill="freeze"/>
+      <!-- Blink while active -->
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,0;0,0" dur="0.5s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Terminal bottom prompt (appears after output completes) -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.95;1" dur="10s" fill="freeze"/>
+      <text x="790" y="640" font-family="'SF Mono', monospace" font-size="11" fill="#27c93f">&#10095;</text>
+      <rect x="808" y="630" width="8" height="14" rx="1" fill="#e0e0f0" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0;0.6" dur="1s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--     SEARCH SIGNAL CONSTELLATION (top-right)      -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g transform="translate(1050, 30)" opacity="0.35">
+    <!-- Constellation lines (animated draw-on) -->
+    <line x1="0" y1="0" x2="30" y2="-10" stroke="#00D4AA" stroke-width="0.5" opacity="0.4" stroke-dasharray="35" stroke-dashoffset="35">
+      <animate attributeName="stroke-dashoffset" values="35;0" dur="1s" fill="freeze"/>
+    </line>
+    <line x1="30" y1="-10" x2="60" y2="5" stroke="#FFB347" stroke-width="0.5" opacity="0.4" stroke-dasharray="35" stroke-dashoffset="35">
+      <animate attributeName="stroke-dashoffset" values="35;0" dur="1s" begin="0.2s" fill="freeze"/>
+    </line>
+    <line x1="60" y1="5" x2="45" y2="25" stroke="#FF6B9D" stroke-width="0.5" opacity="0.4" stroke-dasharray="35" stroke-dashoffset="35">
+      <animate attributeName="stroke-dashoffset" values="35;0" dur="1s" begin="0.4s" fill="freeze"/>
+    </line>
+    <line x1="45" y1="25" x2="15" y2="20" stroke="#8080FF" stroke-width="0.5" opacity="0.4" stroke-dasharray="35" stroke-dashoffset="35">
+      <animate attributeName="stroke-dashoffset" values="35;0" dur="1s" begin="0.6s" fill="freeze"/>
+    </line>
+    <line x1="15" y1="20" x2="0" y2="0" stroke="#C084FC" stroke-width="0.5" opacity="0.4" stroke-dasharray="35" stroke-dashoffset="35">
+      <animate attributeName="stroke-dashoffset" values="35;0" dur="1s" begin="0.8s" fill="freeze"/>
+    </line>
+    <!-- Cross-connections -->
+    <line x1="0" y1="0" x2="45" y2="25" stroke="#555577" stroke-width="0.3" opacity="0.2"/>
+    <line x1="30" y1="-10" x2="15" y2="20" stroke="#555577" stroke-width="0.3" opacity="0.2"/>
+
+    <!-- Signal nodes (breathing pulse) -->
+    <circle cx="0" cy="0" r="3" fill="#00D4AA">
+      <animate attributeName="r" values="3;4.5;3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="30" cy="-10" r="2.5" fill="#FFB347">
+      <animate attributeName="r" values="2.5;4;2.5" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="60" cy="5" r="3" fill="#FF6B9D">
+      <animate attributeName="r" values="3;4.5;3" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="45" cy="25" r="2.5" fill="#8080FF">
+      <animate attributeName="r" values="2.5;4;2.5" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="15" cy="20" r="2" fill="#C084FC">
+      <animate attributeName="r" values="2;3.5;2" dur="3s" begin="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Labels (tiny, subtle) -->
+    <text x="0" y="12" font-family="'SF Mono', monospace" font-size="5" fill="#00D4AA" text-anchor="middle" opacity="0.6">vec</text>
+    <text x="30" y="-16" font-family="'SF Mono', monospace" font-size="5" fill="#FFB347" text-anchor="middle" opacity="0.6">bm25</text>
+    <text x="72" y="8" font-family="'SF Mono', monospace" font-size="5" fill="#FF6B9D" opacity="0.6">tri</text>
+    <text x="55" y="32" font-family="'SF Mono', monospace" font-size="5" fill="#8080FF" opacity="0.6">sym</text>
+    <text x="8" y="28" font-family="'SF Mono', monospace" font-size="5" fill="#C084FC" opacity="0.6">graph</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--     ORBITING DATA FLOW (around window frame)     -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g opacity="0.3">
+    <!-- Left edge flow -->
+    <circle cx="75" cy="200" r="2.5" fill="#9999ff" filter="url(#soft-glow)">
+      <animate attributeName="cy" values="200;500;200" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Left edge flow 2 -->
+    <circle cx="77" cy="400" r="1.5" fill="#00d4ff" filter="url(#soft-glow)">
+      <animate attributeName="cy" values="400;150;400" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.1;0.6;0.1" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Right edge flow -->
+    <circle cx="1125" cy="450" r="2.5" fill="#F45B69" filter="url(#soft-glow)">
+      <animate attributeName="cy" values="450;200;450" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Right edge flow 2 -->
+    <circle cx="1123" cy="250" r="1.5" fill="#ff6b7b" filter="url(#soft-glow)">
+      <animate attributeName="cy" values="250;550;250" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.1;0.6;0.1" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Top edge flow -->
+    <circle cx="400" cy="56" r="2" fill="#00d4ff" filter="url(#soft-glow)">
+      <animate attributeName="cx" values="400;800;400" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Bottom edge flow -->
+    <circle cx="700" cy="665" r="2" fill="#ff6b7b" filter="url(#soft-glow)">
+      <animate attributeName="cx" values="700;300;700" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="9s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--          BOTTOM: BRAND SIGNATURE                 -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Cascade logo mark (animated) -->
+  <g transform="translate(555, 692)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="0;0;360;360" keyTimes="0;0.4;0.6;1" dur="15s" repeatCount="indefinite"/>
+      <rect x="-8" y="-8" width="6" height="6" rx="1.5" fill="#9999ff" opacity="0.8"/>
+      <rect x="0" y="-8" width="6" height="6" rx="1.5" fill="#F45B69" opacity="0.8"/>
+      <rect x="-8" y="0" width="6" height="6" rx="1.5" fill="#00d4ff" opacity="0.8"/>
+      <rect x="0" y="0" width="6" height="6" rx="1.5" fill="#ff6b7b" opacity="0.8"/>
+      <circle cx="-1" cy="-1" r="2" fill="#ffffff" filter="url(#soft-glow)">
+        <animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- Brand text -->
+  <text x="575" y="699" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" fill="url(#title-gradient)" letter-spacing="4" filter="url(#soft-glow)">
+    AGNOS
+  </text>
+  <text x="648" y="699" font-family="'SF Mono', monospace" font-size="10" fill="#555577" letter-spacing="0.5">
+    imaginethat.ai
+  </text>
+
+  <!-- Decorative bottom line -->
+  <line x1="480" y1="710" x2="720" y2="710" stroke="url(#accent-bar)" stroke-width="1" opacity="0.2"/>
+</svg>

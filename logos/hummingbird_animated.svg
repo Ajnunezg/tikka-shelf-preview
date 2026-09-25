@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Animated origami-style hummingbird.
+  Gradient: #8080ff → #ff8080 (modeled on the provided reference icon)
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1024 1024"
+     width="1024" height="1024"
+     role="img"
+     aria-label="Animated hummingbird"
+     shape-rendering="geometricPrecision">
+  <title>Animated Hummingbird</title>
+
+  <defs>
+    <!-- Main color gradient (right=blue #8080ff → left=pink #ff8080) -->
+    <linearGradient id="birdGrad" gradientUnits="userSpaceOnUse" x1="875" y1="512" x2="126" y2="512">
+      <stop offset="0%" stop-color="#8080ff"/>
+      <stop offset="100%" stop-color="#ff8080"/>
+    </linearGradient>
+
+    <!-- Subtle paper-like lighting overlays -->
+    <radialGradient id="pieceHighlight" gradientUnits="userSpaceOnUse" cx="360" cy="260" r="700">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.00"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.00"/>
+    </radialGradient>
+
+    <linearGradient id="pieceShade" gradientUnits="userSpaceOnUse" x1="0" y1="880" x2="0" y2="180">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.16"/>
+      <stop offset="65%" stop-color="#000000" stop-opacity="0.00"/>
+    </linearGradient>
+
+    <!-- Soft shadow for lift -->
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+
+    <!-- Geometry (extracted & simplified from the provided image) -->
+    <path id="wingPath" d="M 126.0 198.0 L 413.0 545.0 L 483.0 548.0 L 682.0 548.0 L 492.0 302.0 L 482.0 293.0 L 467.0 286.0 L 130.0 196.0 Z"/>
+    <path id="headPath" d="M 743.0 291.0 L 721.0 292.0 L 699.0 303.0 L 591.0 398.0 L 591.0 401.0 L 610.0 427.0 L 706.0 547.0 L 711.0 545.0 L 777.0 397.0 L 787.0 388.0 L 797.0 384.0 L 842.0 375.0 L 875.0 366.0 L 875.0 363.0 L 872.0 360.0 L 796.0 316.0 L 755.0 294.0 Z"/>
+    <path id="tailPath" d="M 396.0 548.0 L 393.0 548.0 L 391.0 550.0 L 354.0 619.0 L 259.0 807.0 L 261.0 811.0 L 264.0 811.0 L 413.0 731.0 L 419.0 726.0 L 398.0 550.0 Z"/>
+    <path id="bodyPath" d="M 435.0 716.0 L 437.0 717.0 L 442.0 715.0 L 630.0 603.0 L 685.0 569.0 L 688.0 566.0 L 688.0 562.0 L 685.0 560.0 L 415.0 558.0 L 413.0 563.0 Z"/>
+  </defs>
+
+  <!-- Entire bird hover -->
+  <g id="bird">
+    <animateTransform attributeName="transform"
+                      type="translate"
+                      dur="1.40s"
+                      repeatCount="indefinite"
+                      values="0 -6; 0 0; 0 -6"
+                      keyTimes="0; 0.55; 1"
+                      calcMode="spline"
+                      keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"/>
+
+    <!-- Base with shadow -->
+    <g id="birdBase" filter="url(#softShadow)">
+
+      <!-- Tail (subtle flick) -->
+      <g id="tail">
+        <animateTransform attributeName="transform"
+                          type="rotate"
+                          dur="1.20s"
+                          repeatCount="indefinite"
+                          values="0 396 548; 3 396 548; 0 396 548; -2 396 548; 0 396 548"
+                          keyTimes="0; 0.30; 0.55; 0.80; 1"
+                          calcMode="spline"
+                          keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+        <use href="#tailPath" fill="url(#birdGrad)" stroke="#ffffff" stroke-opacity="0.22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <use href="#tailPath" fill="url(#pieceHighlight)" opacity="0.55"/>
+        <use href="#tailPath" fill="url(#pieceShade)" opacity="0.55"/>
+      </g>
+
+      <!-- Main wing (flap) -->
+      <g id="wing">
+        <animateTransform attributeName="transform"
+                          type="rotate"
+                          dur="0.85s"
+                          repeatCount="indefinite"
+                          values="0 682 548; -6 682 548; 2 682 548; -5 682 548; 0 682 548"
+                          keyTimes="0; 0.25; 0.52; 0.78; 1"
+                          calcMode="spline"
+                          keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+        <use href="#wingPath" fill="url(#birdGrad)" stroke="#ffffff" stroke-opacity="0.18" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <use href="#wingPath" fill="url(#pieceHighlight)" opacity="0.55"/>
+        <use href="#wingPath" fill="url(#pieceShade)" opacity="0.60"/>
+      </g>
+
+      <!-- Lower body/wing (counter motion) -->
+      <g id="body">
+        <animateTransform attributeName="transform"
+                          type="rotate"
+                          dur="0.85s"
+                          repeatCount="indefinite"
+                          values="0 688 562; 1.6 688 562; 0 688 562; -1.0 688 562; 0 688 562"
+                          keyTimes="0; 0.25; 0.52; 0.78; 1"
+                          calcMode="spline"
+                          keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+        <use href="#bodyPath" fill="url(#birdGrad)" stroke="#ffffff" stroke-opacity="0.20" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <use href="#bodyPath" fill="url(#pieceHighlight)" opacity="0.55"/>
+        <use href="#bodyPath" fill="url(#pieceShade)" opacity="0.55"/>
+      </g>
+
+      <!-- Head (gentle nod) -->
+      <g id="head">
+        <animateTransform attributeName="transform"
+                          type="rotate"
+                          dur="1.60s"
+                          repeatCount="indefinite"
+                          values="0 706 547; 0.8 706 547; 0 706 547; -0.8 706 547; 0 706 547"
+                          keyTimes="0; 0.32; 0.55; 0.78; 1"
+                          calcMode="spline"
+                          keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+
+        <use href="#headPath" fill="url(#birdGrad)" stroke="#ffffff" stroke-opacity="0.18" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <use href="#headPath" fill="url(#pieceHighlight)" opacity="0.60"/>
+        <use href="#headPath" fill="url(#pieceShade)" opacity="0.50"/>
+
+        <!-- Eye (blink) -->
+        <g transform="translate(753.1 360.2)">
+          <g>
+            <animateTransform attributeName="transform"
+                              type="scale"
+                              dur="4.20s"
+                              repeatCount="indefinite"
+                              values="1 1; 1 1; 1 0.10; 1 1; 1 1"
+                              keyTimes="0; 0.70; 0.73; 0.76; 1"
+                              calcMode="spline"
+                              keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"/>
+            <circle r="14" fill="#6FE6B7" opacity="0.95"/>
+            <circle cx="-4" cy="-4" r="6" fill="#ffffff" opacity="0.35"/>
+          </g>
+        </g>
+
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1600" height="900" preserveAspectRatio="xMidYMid meet" style="background:#08080f;">
+  <title>Agnos</title>
+  <desc>Animated emblem for Agnos the agent</desc>
+  <defs>
+    <style>
+      /* A) Breathing pulse ~3.5s */
+      @keyframes breathe {
+        0%, 100% { transform: scale(0.995); }
+        50% { transform: scale(1.005); }
+      }
+      /* Halo breathing */
+      @keyframes breathe-halo {
+        0%, 100% { transform: scale(0.96); opacity: 0.55; }
+        50% { transform: scale(1.04); opacity: 0.9; }
+      }
+      /* B) Attention shimmer ~7s */
+      @keyframes shimmer {
+        0% { transform: translateX(-180px); }
+        20%, 100% { transform: translateX(280px); }
+      }
+      /* C) Signal micro-motion ~5s per node group */
+      @keyframes orbit-a {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+      }
+      @keyframes orbit-b {
+        0%, 100% { transform: rotate(3deg); }
+        50% { transform: rotate(-3deg); }
+      }
+      @keyframes orbit-c {
+        0%, 100% { transform: rotate(-2.5deg); }
+        50% { transform: rotate(2.5deg); }
+      }
+      @keyframes orbit-d {
+        0%, 100% { transform: rotate(2deg); }
+        50% { transform: rotate(-2deg); }
+      }
+      /* D) Freshness dash rotation ~10s */
+      @keyframes dash-rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      /* Freshness tick brightening ~10s aligned */
+      @keyframes tick-bright {
+        0%, 85%, 100% { opacity: 0.4; stroke-width: 2; }
+        90%, 95% { opacity: 1; stroke-width: 3; }
+      }
+      /* E) Circuit breaker flicker ~15s */
+      @keyframes breaker-flicker {
+        0%, 92%, 96%, 100% { opacity: 0.3; }
+        93%, 93.5% { opacity: 1; }
+        94%, 95% { opacity: 0.15; }
+        95.5% { opacity: 0.8; }
+      }
+      /* Backpressure throttle arc ~6s */
+      @keyframes throttle {
+        0%, 100% { opacity: 0.2; stroke-width: 2; }
+        50% { opacity: 0.55; stroke-width: 3.5; }
+      }
+      /* Reproducer flag ghost ~9s */
+      @keyframes repro-flag {
+        0%, 70%, 100% { opacity: 0; }
+        78%, 88% { opacity: 0.6; }
+      }
+      /* Float the whole emblem */
+      @keyframes float-y {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+      /* Stream pulse on connector arcs */
+      @keyframes stream-pulse {
+        0%, 100% { stroke-dashoffset: 0; }
+        50% { stroke-dashoffset: -12; }
+      }
+
+      .core-group { transform-origin: 256px 256px; animation: breathe 3.5s ease-in-out infinite; }
+      .halo { transform-origin: 256px 256px; animation: breathe-halo 3.5s ease-in-out infinite; }
+      .shimmer-bar { animation: shimmer 7s cubic-bezier(0.25, 0, 0.15, 1) infinite; }
+      .node-a { transform-origin: 256px 256px; animation: orbit-a 5s ease-in-out infinite; }
+      .node-b { transform-origin: 256px 256px; animation: orbit-b 5.8s ease-in-out infinite; }
+      .node-c { transform-origin: 256px 256px; animation: orbit-c 4.6s ease-in-out infinite; }
+      .node-d { transform-origin: 256px 256px; animation: orbit-d 5.3s ease-in-out infinite; }
+      .dash-ring { transform-origin: 256px 256px; animation: dash-rotate 10s linear infinite; }
+      .fresh-tick { transform-origin: 256px 256px; animation: dash-rotate 10s linear infinite, tick-bright 10s ease-in-out infinite; }
+      .breaker { animation: breaker-flicker 15s ease-in-out infinite; }
+      .throttle-arc { transform-origin: 256px 256px; animation: throttle 6s ease-in-out infinite; }
+      .repro-flag { animation: repro-flag 9s ease-in-out infinite; }
+      .float-wrap { animation: float-y 6.5s ease-in-out infinite; }
+      .stream-arc { animation: stream-pulse 3s linear infinite; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .core-group, .halo, .shimmer-bar, .node-a, .node-b, .node-c, .node-d,
+        .dash-ring, .fresh-tick, .breaker, .throttle-arc, .repro-flag, .float-wrap, .stream-arc {
+          animation: none !important;
+        }
+      }
+    </style>
+
+    <radialGradient id="hg" cx="50%" cy="50%" r="50%">
+      <stop offset="25%" stop-color="#8080ff" stop-opacity="0.14"/>
+      <stop offset="65%" stop-color="#8080ff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#8080ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cg" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#2e2e40"/>
+      <stop offset="50%" stop-color="#191926"/>
+      <stop offset="100%" stop-color="#0c0c14"/>
+    </radialGradient>
+    <linearGradient id="cb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8080ff" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#8080ff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#028090" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="vb" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="ss" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sv" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8080ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ff8080" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="gl" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+    <clipPath id="cc"><circle cx="256" cy="256" r="76"/></clipPath>
+    <clipPath id="vc"><rect x="190" y="240" width="132" height="32" rx="16"/></clipPath>
+  </defs>
+
+  <g class="float-wrap">
+
+    <!-- === AMBIENT HALO === -->
+    <circle class="halo" cx="256" cy="256" r="155" fill="url(#hg)"/>
+
+    <!-- === OUTER RING 1: Freshness dashes === -->
+    <circle class="dash-ring" cx="256" cy="256" r="135" fill="none" stroke="#8080ff" stroke-width="1" stroke-dasharray="3 9" stroke-linecap="round" opacity="0.15"/>
+    <!-- Freshness tick (teal segment at ~12 o'clock) -->
+    <path class="fresh-tick" d="M 256 121 A 135 135 0 0 1 289 124" fill="none" stroke="#028090" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- === OUTER RING 2: Throttle + Breaker === -->
+    <!-- Throttle arc (~7 o'clock) -->
+    <path class="throttle-arc" d="M 175 350 A 130 130 0 0 1 152 310" fill="none" stroke="#028090" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+    <!-- Circuit breaker notch (~2 o'clock) -->
+    <path class="breaker" d="M 355 185 A 130 130 0 0 1 368 210" fill="none" stroke="#f45b69" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- === TOOL NODE A: Terminal (10 o'clock) === -->
+    <g class="node-a">
+      <!-- Connector arc -->
+      <path d="M 195 195 Q 175 230 190 240" fill="none" stroke="#8080ff" stroke-width="1" stroke-dasharray="4 4" stroke-linecap="round" opacity="0.3" class="stream-arc"/>
+      <!-- Node circle -->
+      <circle cx="172" cy="182" r="14" fill="#0c0c16" stroke="#8080ff" stroke-width="1.2" opacity="0.7"/>
+      <!-- Terminal glyph >_ -->
+      <path d="M 165 179 L 171 182 L 165 185" fill="none" stroke="#8080ff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+      <line x1="173" y1="185" x2="179" y2="185" stroke="#8080ff" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+    </g>
+
+    <!-- === TOOL NODE B: Diff/File (2 o'clock) === -->
+    <g class="node-b">
+      <path d="M 317 195 Q 335 230 322 240" fill="none" stroke="#ff8080" stroke-width="1" stroke-dasharray="4 4" stroke-linecap="round" opacity="0.3" class="stream-arc"/>
+      <circle cx="340" cy="182" r="14" fill="#0c0c16" stroke="#ff8080" stroke-width="1.2" opacity="0.7"/>
+      <!-- Diff glyph: two offset lines -->
+      <line x1="334" y1="177" x2="340" y2="177" stroke="#ff8080" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>
+      <line x1="340" y1="182" x2="346" y2="182" stroke="#ff8080" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+      <line x1="334" y1="187" x2="340" y2="187" stroke="#ff8080" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>
+    </g>
+
+    <!-- === TOOL NODE C: Search (8 o'clock) === -->
+    <g class="node-c">
+      <path d="M 195 317 Q 175 282 190 272" fill="none" stroke="#028090" stroke-width="1" stroke-dasharray="4 4" stroke-linecap="round" opacity="0.3" class="stream-arc"/>
+      <circle cx="172" cy="330" r="14" fill="#0c0c16" stroke="#028090" stroke-width="1.2" opacity="0.7"/>
+      <!-- Search glyph: small circle + line -->
+      <circle cx="170" cy="328" r="4" fill="none" stroke="#028090" stroke-width="1.2" opacity="0.8"/>
+      <line x1="173" y1="331" x2="177" y2="335" stroke="#028090" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+    </g>
+
+    <!-- === TOOL NODE D: Check/Test (4 o'clock) === -->
+    <g class="node-d">
+      <path d="M 317 317 Q 335 282 322 272" fill="none" stroke="#8080ff" stroke-width="1" stroke-dasharray="4 4" stroke-linecap="round" opacity="0.3" class="stream-arc"/>
+      <circle cx="340" cy="330" r="14" fill="#0c0c16" stroke="#8080ff" stroke-width="1.2" opacity="0.7"/>
+      <!-- Check glyph -->
+      <path d="M 334 330 L 338 334 L 346 326" fill="none" stroke="#8080ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    </g>
+
+    <!-- === MAIN CORE === -->
+    <g class="core-group">
+      <!-- Core sphere -->
+      <circle cx="256" cy="256" r="76" fill="url(#cg)" stroke="url(#cb)" stroke-width="1.5"/>
+
+      <!-- Inner grid (very subtle) -->
+      <g clip-path="url(#cc)" opacity="0.06">
+        <circle cx="256" cy="256" r="58" fill="none" stroke="#fff" stroke-width="0.8" stroke-dasharray="3 7"/>
+        <circle cx="256" cy="256" r="38" fill="none" stroke="#fff" stroke-width="0.8" stroke-dasharray="1 5"/>
+        <line x1="180" y1="256" x2="332" y2="256" stroke="#fff" stroke-width="0.8" stroke-dasharray="2 5"/>
+        <line x1="256" y1="180" x2="256" y2="332" stroke="#fff" stroke-width="0.8" stroke-dasharray="2 5"/>
+      </g>
+
+      <!-- Visor -->
+      <rect x="190" y="240" width="132" height="32" rx="16" fill="#05050a" stroke="url(#vb)" stroke-width="0.8"/>
+      <!-- Visor top rim -->
+      <path d="M 204 242 Q 256 240.5 308 242" fill="none" stroke="#fff" stroke-width="0.8" stroke-opacity="0.2" stroke-linecap="round"/>
+
+      <!-- Data bridge -->
+      <line x1="232" y1="256" x2="280" y2="256" stroke="url(#bg)" stroke-width="1.8" stroke-dasharray="0 6.5" stroke-linecap="round"/>
+
+      <!-- Left sensor eye -->
+      <circle cx="220" cy="256" r="4.5" fill="#8080ff" filter="url(#gl)"/>
+      <circle cx="220" cy="256" r="1.8" fill="#fff"/>
+
+      <!-- Right sensor eye -->
+      <circle cx="292" cy="256" r="4.5" fill="#ff8080" filter="url(#gl)"/>
+      <circle cx="292" cy="256" r="1.8" fill="#fff"/>
+
+      <!-- Shimmer sweep -->
+      <g class="shimmer-bar">
+        <g clip-path="url(#cc)">
+          <rect x="150" y="100" width="65" height="320" fill="url(#ss)" transform="skewX(-25)"/>
+        </g>
+        <g clip-path="url(#vc)">
+          <rect x="170" y="100" width="18" height="320" fill="url(#sv)" transform="skewX(-25)"/>
+        </g>
+      </g>
+
+      <!-- Glass highlight arcs -->
+      <path d="M 207 215 A 64 64 0 0 1 305 215" fill="none" stroke="#fff" stroke-opacity="0.1" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M 218 306 A 64 64 0 0 0 294 306" fill="none" stroke="#8080ff" stroke-opacity="0.12" stroke-width="1.2" stroke-linecap="round"/>
+
+      <!-- Reproducer flag (micro bookmark at 6 o'clock) -->
+      <path class="repro-flag" d="M 252 328 L 252 338 L 256 335 L 260 338 L 260 328" fill="none" stroke="#028090" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+    </g>
+
+  </g>
+</svg>

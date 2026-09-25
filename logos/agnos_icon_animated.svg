@@ -1,0 +1,67 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    
+<defs>
+    <radialGradient id="core_glow_inner" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#9999ff" stop-opacity="0.8" />
+        <stop offset="100%" stop-color="#00d4ff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="core_glow_outer" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff4d5e" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#ff6b7b" stop-opacity="0" />
+    </radialGradient>
+                     
+    <linearGradient id="path_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#9999ff" />
+        <stop offset="30%" stop-color="#00d4ff" />
+        <stop offset="60%" stop-color="#ff4d5e" />
+        <stop offset="100%" stop-color="#ff6b7b" />
+    </linearGradient>
+                     
+    <g id="node_pt">
+        <circle cx="0" cy="0" r="4.5" fill="currentColor" />
+        <circle cx="0" cy="0" r="2" fill="#ffffff" />
+    </g>
+
+    <!-- Saturated Terminal Cascade Icon -->
+    <g id="icon_cascade">
+        <rect x="-10" y="-10" width="8" height="8" rx="2" fill="#9999ff" />
+        <rect x="2" y="-10" width="8" height="8" rx="2" fill="#ff4d5e" />
+        <rect x="-10" y="2" width="8" height="8" rx="2" fill="#00d4ff" />
+        <rect x="2" y="2" width="8" height="8" rx="2" fill="#ff6b7b" />
+        <circle cx="0" cy="0" r="3" fill="#ffffff" />
+    </g>
+</defs>
+
+
+    <circle cx="100" cy="100" r="80" fill="url(#core_glow_outer)" opacity="0.5" />
+    <circle cx="100" cy="100" r="45" fill="url(#core_glow_inner)" opacity="0.6" />
+
+    <path d="M 130,100 A 30,30 0 1,1 130,99.9 L 130,118 C 130,155 175,155 175,100 A 75,75 0 1,0 60,165"
+          fill="none"
+          stroke="url(#path_grad)"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-dasharray="650"
+          stroke-dashoffset="650">
+        <animate attributeName="stroke-dashoffset" values="650; 0; 0; -650" keyTimes="0; 0.4; 0.7; 1" dur="6s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Nodes -->
+    <g>
+        <use href="#node_pt" x="130" y="100" color="#9999ff" /> <!-- Core junction -->
+        <use href="#node_pt" x="100" y="25" color="#00d4ff" />  <!-- Top apex -->
+        <use href="#node_pt" x="25" y="100" color="#ff4d5e" />  <!-- Left apex -->
+        <use href="#node_pt" x="60" y="165" color="#ff6b7b" />  <!-- Terminal point -->
+    </g>
+
+    <!-- Core Icon Centered -->
+    <g transform="translate(100, 100)">
+        <g transform-origin="0 0">
+            <animateTransform attributeName="transform" type="rotate" values="0; 0; 360; 360" keyTimes="0; 0.4; 0.55; 1" dur="6s" repeatCount="indefinite"/>
+            <use href="#icon_cascade" x="0" y="0" />
+        </g>
+    </g>
+
+    
+</svg>
